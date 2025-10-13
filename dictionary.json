@@ -1,0 +1,201 @@
+[ {
+  "word" : "táo",
+  "meaning" : "Một loại trái cây; đồng thời là tên của công ty công nghệ Apple Inc.",
+  "frequency" : 0,
+  "tags" : [ "trái cây", "công ty" ]
+}, {
+  "word" : "ứng dụng",
+  "meaning" : "Một chương trình phần mềm; một đơn yêu cầu chính thức.",
+  "frequency" : 0,
+  "tags" : [ "phần mềm", "mẫu đơn" ]
+}, {
+  "word" : "áp dụng",
+  "meaning" : "Nộp đơn; đưa vào thực tế, sử dụng.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+}, {
+  "word" : "chuối",
+  "meaning" : "Một loại trái cây cong, có vỏ màu vàng.",
+  "frequency" : 0,
+  "tags" : [ "trái cây" ]
+}, {
+  "word" : "ban nhạc",
+  "meaning" : "Một nhóm người chơi nhạc; hoặc một dải, một vòng.",
+  "frequency" : 0,
+  "tags" : [ "âm nhạc", "vật thể" ]
+}, {
+  "word" : "ngân hàng",
+  "meaning" : "Tổ chức tài chính; hoặc bờ sông.",
+  "frequency" : 0,
+  "tags" : [ "tài chính", "địa lý" ]
+}, {
+  "word" : "sách",
+  "meaning" : "Tập hợp các trang in; hoặc hành động đặt chỗ.",
+  "frequency" : 0,
+  "tags" : [ "danh từ", "động từ" ]
+}, {
+  "word" : "dấu trang",
+  "meaning" : "Liên kết hoặc vị trí được lưu lại; đánh dấu trong sách hoặc trình duyệt.",
+  "frequency" : 0,
+  "tags" : [ "danh từ", "phần mềm" ]
+}, {
+  "word" : "xe hơi",
+  "meaning" : "Phương tiện giao thông có bốn bánh chạy trên đường.",
+  "frequency" : 0,
+  "tags" : [ "giao thông" ]
+}, {
+  "word" : "thẻ",
+  "meaning" : "Tấm nhỏ bằng giấy hoặc nhựa; ví dụ như thẻ ngân hàng, thiệp chúc mừng.",
+  "frequency" : 0,
+  "tags" : [ "vật thể" ]
+}, {
+  "word" : "chăm sóc",
+  "meaning" : "Sự quan tâm, lo lắng; duy trì, bảo dưỡng.",
+  "frequency" : 0,
+  "tags" : [ "cảm xúc", "danh từ", "động từ" ]
+}, {
+  "word" : "mèo",
+  "meaning" : "Động vật có vú nhỏ được con người nuôi làm thú cưng.",
+  "frequency" : 0,
+  "tags" : [ "động vật" ]
+}, {
+  "word" : "danh mục",
+  "meaning" : "Danh sách đầy đủ các mục hoặc sản phẩm.",
+  "frequency" : 0,
+  "tags" : [ "danh từ" ]
+}, {
+  "word" : "bắt",
+  "meaning" : "Hành động chộp, giữ hoặc nắm được vật gì đó.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+}, {
+  "word" : "chó",
+  "meaning" : "Động vật được thuần hóa; thường được nuôi làm thú cưng hoặc bảo vệ.",
+  "frequency" : 0,
+  "tags" : [ "động vật" ]
+}, {
+  "word" : "cửa",
+  "meaning" : "Tấm ngăn có thể mở hoặc đóng; lối ra vào của phòng hoặc tòa nhà.",
+  "frequency" : 0,
+  "tags" : [ "vật thể" ]
+}, {
+  "word" : "lái xe",
+  "meaning" : "Điều khiển phương tiện; hoặc thúc đẩy hành động.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+}, {
+  "word" : "tài xế",
+  "meaning" : "Người điều khiển xe; hoặc trình điều khiển trong phần mềm.",
+  "frequency" : 0,
+  "tags" : [ "con người", "phần mềm" ]
+}, {
+  "word" : "vịt",
+  "meaning" : "Loài chim nước; hoặc hành động cúi đầu, né tránh nhanh.",
+  "frequency" : 0,
+  "tags" : [ "động vật", "động từ" ]
+}, {
+  "word" : "dữ liệu",
+  "meaning" : "Thông tin hoặc số liệu được thu thập để phân tích.",
+  "frequency" : 0,
+  "tags" : [ "thông tin", "máy tính" ]
+}, {
+  "word" : "cơ sở dữ liệu",
+  "meaning" : "Tập hợp có tổ chức của dữ liệu; được dùng để lưu trữ và truy vấn.",
+  "frequency" : 0,
+  "tags" : [ "máy tính" ]
+}, {
+  "word" : "từ điển",
+  "meaning" : "Sách hoặc tập tin liệt kê từ ngữ và ý nghĩa của chúng.",
+  "frequency" : 0,
+  "tags" : [ "tham khảo", "ngôn ngữ" ]
+}, {
+  "word" : "khoảng cách",
+  "meaning" : "Độ dài giữa hai điểm trong không gian hoặc thời gian.",
+  "frequency" : 0,
+  "tags" : [ "đo lường" ]
+}, {
+  "word" : "hiển thị",
+  "meaning" : "Trình bày hoặc hiển thị ra màn hình.",
+  "frequency" : 0,
+  "tags" : [ "động từ", "phần cứng" ]
+}, {
+  "word" : "năng lượng",
+  "meaning" : "Sức mạnh hoặc khả năng thực hiện công việc.",
+  "frequency" : 0,
+  "tags" : [ "vật lý", "danh từ" ]
+}, {
+  "word" : "động cơ",
+  "meaning" : "Máy móc chuyển hóa năng lượng; hoặc mô-đun xử lý trong phần mềm.",
+  "frequency" : 0,
+  "tags" : [ "cơ khí", "máy tính" ]
+}, {
+  "word" : "môi trường",
+  "meaning" : "Không gian, điều kiện xung quanh; hoặc môi trường hệ thống trong máy tính.",
+  "frequency" : 0,
+  "tags" : [ "thiên nhiên", "máy tính" ]
+}, {
+  "word" : "lỗi",
+  "meaning" : "Sai sót, sự cố hoặc trục trặc.",
+  "frequency" : 0,
+  "tags" : [ "danh từ", "máy tính" ]
+}, {
+  "word" : "sự kiện",
+  "meaning" : "Một việc hoặc hiện tượng xảy ra.",
+  "frequency" : 0,
+  "tags" : [ "danh từ" ]
+}, {
+  "word" : "đánh giá",
+  "meaning" : "Xem xét và xác định giá trị hoặc chất lượng.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+}, {
+  "word" : "ví dụ",
+  "meaning" : "Trường hợp hoặc mẫu được dùng để minh họa.",
+  "frequency" : 0,
+  "tags" : [ "danh từ" ]
+}, {
+  "word" : "xuất khẩu",
+  "meaning" : "Đưa hàng hóa hoặc dữ liệu sang nơi khác.",
+  "frequency" : 0,
+  "tags" : [ "động từ", "thương mại" ]
+}, {
+  "word" : "biểu thức",
+  "meaning" : "Cụm từ, biểu cảm; hoặc công thức toán học.",
+  "frequency" : 0,
+  "tags" : [ "ngôn ngữ", "toán học" ]
+}, {
+  "word" : "mở rộng",
+  "meaning" : "Kéo dài, tăng thêm kích thước hoặc phạm vi.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+}, {
+  "word" : "nhà máy",
+  "meaning" : "Nơi sản xuất hoặc chế tạo hàng hóa.",
+  "frequency" : 0,
+  "tags" : [ "công nghiệp" ]
+}, {
+  "word" : "tính năng",
+  "meaning" : "Đặc điểm hoặc chức năng nổi bật của sản phẩm, phần mềm.",
+  "frequency" : 0,
+  "tags" : [ "danh từ", "phần mềm" ]
+}, {
+  "word" : "trường",
+  "meaning" : "Cánh đồng; hoặc vùng dữ liệu trong hệ thống.",
+  "frequency" : 0,
+  "tags" : [ "địa lý", "máy tính" ]
+}, {
+  "word" : "bộ lọc",
+  "meaning" : "Thiết bị hoặc thuật toán dùng để loại bỏ tạp chất hoặc dữ liệu không mong muốn.",
+  "frequency" : 0,
+  "tags" : [ "danh từ", "máy tính" ]
+}, {
+  "word" : "cuối cùng",
+  "meaning" : "Phần hoặc giai đoạn sau cùng, kết thúc của quá trình.",
+  "frequency" : 0,
+  "tags" : [ "tính từ" ]
+}, {
+  "word" : "tìm kiếm",
+  "meaning" : "Hành động tra cứu, phát hiện hoặc xác định một đối tượng.",
+  "frequency" : 0,
+  "tags" : [ "động từ" ]
+} ]

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.dictionarysuggestionsystem.DictionaryController">
+  <top>
+    <VBox spacing="0">
+      <MenuBar>
+        <menus>
+          <Menu text="File">
+            <MenuItem text="Reload" onAction="#onReload"/>
+            <SeparatorMenuItem />
+            <MenuItem text="Exit" onAction="#onExit"/>
+          </Menu>
+          <Menu text="Help">
+            <MenuItem text="About" onAction="#onAbout"/>
+          </Menu>
+        </menus>
+      </MenuBar>
+    </VBox>
+  </top>
+  <center>
+    <TabPane>
+      <tabs>
+        <Tab text="Tìm kiếm" closable="false">
+          <BorderPane>
+            <top>
+              <HBox spacing="10">
+                <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <TextField fx:id="inputField" promptText="Nhập từ cần tìm..." HBox.hgrow="ALWAYS"/>
+                <Button fx:id="searchButton" text="Search" onAction="#onSearch"/>
+              </HBox>
+            </top>
+            <center>
+              <ListView fx:id="suggestionList" />
+            </center>
+            <right>
+              <VBox spacing="8">
+                <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Runtime" style="-fx-font-weight: bold;"/>
+                <Label fx:id="runtimeTrieLabel" text="Trie: -"/>
+                <Label fx:id="runtimeLevenshteinLabel" text="Lev: -"/>
+                <Label fx:id="runtimeTfidfLabel" text="TF-IDF: -"/>
+              </VBox>
+            </right>
+          </BorderPane>
+        </Tab>
+        <Tab text="Quản lý" closable="false">
+          <BorderPane>
+            <center>
+              <TableView fx:id="tableView">
+                <columns>
+                  <TableColumn fx:id="colWord" text="Word" prefWidth="150" />
+                  <TableColumn fx:id="colMeaning" text="Meaning" prefWidth="350" />
+                  <TableColumn fx:id="colFrequency" text="Frequency" prefWidth="100" />
+                  <TableColumn fx:id="colTags" text="Tags" prefWidth="150" />
+                </columns>
+              </TableView>
+            </center>
+            <bottom>
+              <HBox spacing="10" alignment="CENTER_RIGHT">
+                <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button text="Add" onAction="#onAdd"/>
+                <Button text="Edit" onAction="#onEditSelected"/>
+                <Button text="Delete" onAction="#onDeleteSelected"/>
+              </HBox>
+            </bottom>
+          </BorderPane>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </center>
+</BorderPane>
+
+
