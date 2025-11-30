@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.dictionarysuggestionsystem.DictionaryController">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.dictionarysuggestionsystem.DictionaryController">
+  <BorderPane>
   <top>
     <VBox spacing="0">
       <MenuBar>
@@ -78,6 +79,12 @@
       </tabs>
     </TabPane>
   </center>
-</BorderPane>
+  </BorderPane>
+  <StackPane fx:id="notificationContainer" alignment="BOTTOM_RIGHT" mouseTransparent="true">
+    <padding>
+      <Insets  top="300" right="10" bottom="10" left="10"/>
+    </padding>
+  </StackPane>
+</StackPane>
 
 

@@ -130,6 +130,24 @@ public class DictionaryService {
         add(entry);
     }
 
+    public synchronized void incrementFrequency(String word) throws IOException {
+        DictionaryEntry existing = allEntries.stream()
+            .filter(e -> e.getWord().equalsIgnoreCase(word))
+            .findFirst()
+            .orElse(null);
+        if (existing != null) {
+            DictionaryEntry updated = new DictionaryEntry(
+                existing.getWord(),
+                existing.getMeaning(),
+                existing.getFrequency() + 1,
+                existing.getTags()
+            );
+            allEntries.removeIf(e -> e.getWord().equalsIgnoreCase(word));
+            allEntries.add(updated);
+            repo.saveAll(allEntries);
+        }
+    }
+
     public List<DictionaryEntry> getAllEntries() { return Collections.unmodifiableList(allEntries); }
 }
 

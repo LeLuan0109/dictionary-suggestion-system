@@ -7,6 +7,18 @@ import javafx.scene.control.*;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import org.example.dictionarysuggestionsystem.model.DictionaryEntry;
 import org.example.dictionarysuggestionsystem.service.DictionaryService;
 import org.example.dictionarysuggestionsystem.utils.NormalizerUtil;
@@ -33,6 +45,7 @@ public class DictionaryController {
     @FXML private TableColumn<DictionaryEntry, String> colMeaning;
     @FXML private TableColumn<DictionaryEntry, Number> colFrequency;
     @FXML private TableColumn<DictionaryEntry, String> colTags;
+    @FXML private StackPane notificationContainer;
 
     private final ObservableList<String> suggestions = FXCollections.observableArrayList();
     private DictionaryService service;
@@ -49,6 +62,12 @@ public class DictionaryController {
         if (runtimeTfidfLabel != null) runtimeTfidfLabel.setText("TF-IDF: -");
         setupTable();
         refreshTable();
+        
+        // Thêm event handler cho click chuột
+        suggestionList.setOnMouseClicked(this::onSuggestionClick);
+        
+        // Thêm event handler cho phím Enter
+        suggestionList.setOnKeyPressed(this::onSuggestionKeyPress);
     }
 
     @FXML
@@ -222,6 +241,142 @@ public class DictionaryController {
         if (tableView != null) {
             tableView.getItems().setAll(service.getAllEntries());
         }
+    }
+
+    private void onSuggestionClick(MouseEvent event) {
+        if (event.getClickCount() == 1) {
+            String selected = suggestionList.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                incrementFrequencyForWord(selected);
+                showMeaningNotification(selected);
+            }
+        }
+    }
+
+    private void onSuggestionKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String selected = suggestionList.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                incrementFrequencyForWord(selected);
+                showMeaningNotification(selected);
+            }
+        }
+    }
+
+    private void incrementFrequencyForWord(String word) {
+        try {
+            service.incrementFrequency(word);
+            refreshTable();
+        } catch (IOException e) {
+            showError("Không thể cập nhật frequency: " + e.getMessage());
+        }
+    }
+
+    private void showMeaningNotification(String word) {
+        // Tìm meaning của từ
+        DictionaryEntry entry = service.getAllEntries().stream()
+            .filter(e -> e.getWord().equalsIgnoreCase(word))
+            .findFirst()
+            .orElse(null);
+        
+        if (entry == null || entry.getMeaning() == null) {
+            return;
+        }
+
+        // Lấy container - ưu tiên notificationContainer từ FXML
+        StackPane container = notificationContainer;
+        
+        // Nếu không có, tìm từ root scene
+        if (container == null && suggestionList != null && suggestionList.getScene() != null) {
+            javafx.scene.Node root = suggestionList.getScene().getRoot();
+            if (root instanceof StackPane) {
+                StackPane rootPane = (StackPane) root;
+                // Tìm notificationContainer trong root StackPane
+                for (javafx.scene.Node node : rootPane.getChildren()) {
+                    if (node instanceof StackPane) {
+                        StackPane sp = (StackPane) node;
+                        // Kiểm tra nếu là notificationContainer
+                        if (sp.getAlignment() == Pos.BOTTOM_RIGHT && sp.isMouseTransparent()) {
+                            container = sp;
+                            break;
+                        }
+                    }
+                }
+                // Nếu không tìm thấy, tạo container mới và thêm vào root
+                if (container == null) {
+                    container = new StackPane();
+                    container.setAlignment(Pos.BOTTOM_RIGHT);
+                    container.setMouseTransparent(true);
+                    container.setPadding(new Insets(20));
+                    rootPane.getChildren().add(container);
+                }
+            }
+        }
+
+        if (container == null) {
+            return;
+        }
+
+        // Xóa notification cũ nếu có
+        container.getChildren().removeIf(node -> node instanceof VBox && node.getStyle().contains("rgba(0, 0, 0, 0.85)"));
+
+        // Tạo VBox chứa notification
+        VBox notificationBox = new VBox(8);
+        notificationBox.setStyle(
+            "-fx-background-color: rgba(0, 0, 0, 0.85); " +
+            "-fx-background-radius: 10; " +
+            "-fx-padding: 15; " +
+            "-fx-max-width: 400; " +
+            "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);"
+        );
+
+        // Label cho từ
+        Label wordLabel = new Label(word);
+        wordLabel.setStyle(
+            "-fx-font-size: 18px; " +
+            "-fx-font-weight: bold; " +
+            "-fx-text-fill: #4CAF50;"
+        );
+
+        // Label cho meaning
+        Label meaningLabel = new Label(entry.getMeaning());
+        meaningLabel.setStyle(
+            "-fx-font-size: 14px; " +
+            "-fx-text-fill: white; " +
+            "-fx-wrap-text: true;"
+        );
+        meaningLabel.setMaxWidth(380);
+
+
+        notificationBox.getChildren().addAll(wordLabel, meaningLabel);
+
+        // Thêm vào container
+        container.getChildren().add(notificationBox);
+
+        // Tạo biến final để sử dụng trong lambda
+        final StackPane finalContainer = container;
+        final VBox finalNotificationBox = notificationBox;
+
+        // Animation fade in
+        notificationBox.setOpacity(0);
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(300), notificationBox);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.play();
+
+        // Tự động ẩn sau 2 giây với fade out
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.seconds(2), e -> {
+                FadeTransition fadeOut = new FadeTransition(Duration.millis(300), finalNotificationBox);
+                fadeOut.setFromValue(1);
+                fadeOut.setToValue(0);
+                fadeOut.setOnFinished(event -> {
+                    finalContainer.getChildren().remove(finalNotificationBox);
+                });
+                fadeOut.play();
+            })
+        );
+        timeline.play();
     }
 
     private static class EntryForm extends Dialog<EntryForm> {
